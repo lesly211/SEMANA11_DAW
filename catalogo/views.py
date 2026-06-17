@@ -14,6 +14,7 @@ def home(request):
 
 class ProductoListView(ListView):
     model = Producto
+    queryset = Producto.objects.filter(stock__gt=0)
     template_name = "catalogo/catalogo.html"
     context_object_name = "productos"
 
