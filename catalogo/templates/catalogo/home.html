@@ -1,0 +1,16 @@
+{% extends 'catalogo/base.html' %}
+
+{% block title %}Inicio - DjangoShop{% endblock %}
+
+{% block content %}
+<div class="hero">
+    <h1><span>{{ titulo|title }}</span></h1>
+    <p>{{ descripcion }}</p>
+    <div style="margin-bottom: 2rem; font-size: 0.95rem; color: var(--text-secondary);">
+        Has visitado la página de inicio {{ visitas }} veces en esta sesión.
+    </div>
+    <div>
+        <a href="{% url 'catalogo' %}" class="btn btn-primary">Ver Catálogo</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'catalogo/base.html' %}
+
+{% block title %}Catálogo - DjangoShop{% endblock %}
+
+{% block content %}
+<section>
+    <h2 class="section-title">{{ titulo_seccion|title }}</h2>
+    
+    {% if productos %}
+        <div class="grid-products">
+            {% for p in productos %}
+                <div class="card">
+                    <div>
+                        <h3 class="card-title">{{ p.nombre|title }}</h3>
+                        <p class="card-desc">{{ p.descripcion }}</p>
+                    </div>
+                    <div>
+                        <div class="card-meta">
+                            <span class="price">S/ {{ p.precio }}</span>
+                            <span class="stock {% if p.stock < 5 %}low{% endif %}">Stock: {{ p.stock }}</span>
+                        </div>
+                        <div class="date-added">
+                            Agregado el: {{ p.fecha_registro|date:"d \d\e F, Y" }}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="empty-state">
+            <p>No hay productos disponibles en este momento.</p>
+            <a href="{% url 'home' %}" class="btn btn-secondary">Volver al Inicio</a>
+        </div>
+    {% endif %}
+</section>
+{% endblock %}
